@@ -1,4 +1,7 @@
-# learning-vue
+# refresh-vue
+A simple todo list application done in Vue.js
+
+[Open App](https://mutaimwiti.github.io/refresh-vue/)
 
 ## Project setup
 ```
@@ -24,6 +27,3 @@ yarn run test
 ```
 yarn run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
