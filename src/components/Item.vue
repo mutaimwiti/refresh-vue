@@ -4,11 +4,11 @@
       {{data.title}}
     </div>
     <div class="todo-description">
-      {{data.description}} {{data.done}}
-      <button v-if="!data.done" v-on:click="$emit('finish', data.id)" class="finish-button">
+      {{data.description}}
+      <button v-if="!data.done" v-on:click="$emit('finish', data.id)" class="action-button">
         Finish
       </button>
-      <button v-if="data.done" v-on:click="$emit('undo', data.id)" class="finish-button">
+      <button v-if="data.done" v-on:click="$emit('undo', data.id)" class="action-button">
         Undo
       </button>
     </div>
@@ -42,7 +42,7 @@ export default {
     padding-left: 5px;
   }
 
-  .finish-button {
+  .action-button {
     float: right;
     margin-right: 5px;
   }

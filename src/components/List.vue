@@ -1,5 +1,8 @@
 <template>
   <div class="todo-list">
+    <div>
+      <Create v-on:create="createTask"></Create>
+    </div>
     <div class="undone-tasks">
       <b>Undone</b>
       <div v-bind:key="item.id" v-for="item in undone">
@@ -17,6 +20,7 @@
 
 <script>
 import Todo from './Item.vue';
+import Create from './Create.vue';
 import data from '../../__data__';
 
 const { items } = data;
@@ -24,12 +28,14 @@ const { items } = data;
 export default {
   components: {
     Todo,
+    Create,
   },
   name: 'List',
 
   data() {
     return {
       items,
+      currentId: items[items.length - 1].id,
     };
   },
 
@@ -59,19 +65,31 @@ export default {
         return item;
       });
     },
+    createTask(item) {
+      const { title, description } = item;
+      const id = this.currentId + 1;
+
+      this.items.push({
+        id,
+        title,
+        description,
+      });
+
+      this.currentId = id;
+    },
   },
 };
 </script>
 
 <style scoped>
   .undone-tasks {
-    width: 48%;
+    width: 49%;
     float: left;
     margin-right: 1%
   }
 
   .done-tasks {
-    width: 48%;
+    width: 49%;
     float: left;
     margin-left: 1%
   }
