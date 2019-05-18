@@ -5,7 +5,7 @@
     </div>
     <div class="todo-description">
       {{data.description}}
-      <button v-on:click="$emit('delete', data.id)" class="action-button">
+      <button v-on:click="$emit('delete', data.id)" class="action-button delete-button">
         Delete
       </button>
       <button v-if="!data.done" v-on:click="$emit('finish', data.id)" class="action-button">
@@ -29,6 +29,7 @@ export default {
     border: 1px solid #6dd2e2;
     margin-bottom: 10px;
   }
+
   .todo-title {
     border: 1px solid #6dd2e2;
     background: #6dd2e2;
@@ -36,6 +37,7 @@ export default {
     padding-bottom: 3px;
     padding-left: 5px;
   }
+
   .todo-description {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -45,5 +47,9 @@ export default {
   .action-button {
     float: right;
     margin-right: 5px;
+  }
+
+  .delete-button {
+    color: #ff0900;
   }
 </style>
