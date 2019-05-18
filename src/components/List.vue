@@ -6,13 +6,20 @@
     <div class="undone-tasks">
       <b>Undone</b>
       <div v-bind:key="item.id" v-for="item in undone">
-        <Todo v-bind:data="item" v-on:finish="finishTask"/>
+        <Todo
+          v-bind:data="item"
+          v-on:finish="finishTask"
+          v-on:delete="deleteTask"
+        />
       </div>
     </div>
     <div class="done-tasks">
       <b>Done</b>
       <div v-bind:key="item.id" v-for="item in done">
-        <Todo v-bind:data="item" v-on:undo="undoTask"/>
+        <Todo
+          v-bind:data="item"
+          v-on:delete="deleteTask"
+        />
       </div>
     </div>
   </div>
@@ -57,13 +64,8 @@ export default {
         return item;
       });
     },
-    undoTask(taskId) {
-      this.items = this.items.map((item) => {
-        if (item.id === taskId) {
-          return { ...item, done: false };
-        }
-        return item;
-      });
+    deleteTask(taskId) {
+      this.items = this.items.filter(({ id }) => id !== taskId);
     },
     createTask(item) {
       const { title, description } = item;

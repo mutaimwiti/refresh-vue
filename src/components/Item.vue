@@ -5,11 +5,11 @@
     </div>
     <div class="todo-description">
       {{data.description}}
+      <button v-on:click="$emit('delete', data.id)" class="action-button">
+        Delete
+      </button>
       <button v-if="!data.done" v-on:click="$emit('finish', data.id)" class="action-button">
         Finish
-      </button>
-      <button v-if="data.done" v-on:click="$emit('undo', data.id)" class="action-button">
-        Undo
       </button>
     </div>
   </div>
